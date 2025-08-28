@@ -1,0 +1,1 @@
+# SEEG Core package
