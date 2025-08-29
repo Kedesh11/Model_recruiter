@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  seeg-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: seeg-dashboard:latest
+    container_name: seeg-dashboard
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    environment:
+      # Fallbacks if not in .env
+      - VISION_FILE=/app/scripts/vision_seeg.md
+    volumes:
+      # Persist local SQLite scores if used
+      - ./scores.db:/app/scores.db
+      # Optionally persist Streamlit state (uncomment if needed)
+      # - ./streamlit_app/.streamlit:/root/.streamlit
+    restart: unless-stopped

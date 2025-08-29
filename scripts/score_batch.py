@@ -2,8 +2,11 @@
 from __future__ import annotations
 import argparse
 import sys
-from typing import Dict
+from typing import Dict, Optional
 import pandas as pd
+import re
+import requests
+from io import BytesIO
 
 from seeg_core.config import get_settings
 from seeg_core.db import (
@@ -12,7 +15,7 @@ from seeg_core.db import (
     ensure_sqlite_scores_schema,
     upsert_sqlite_score,
 )
-from seeg_core.mtp import parse_mtp_answers, mtp_to_text
+from seeg_core.mtp import parse_mtp_answers, mtp_to_text, compute_mtp_scores
 from seeg_core.features import build_candidate_text, compute_job_vectors
 from seeg_core.scoring import (
     compute_completeness,
@@ -21,6 +24,212 @@ from seeg_core.scoring import (
     recommend,
     upsert_score_to_supabase,
 )
+
+# Optional heavy dependencies for document extraction/OCR
+try:
+    from pdfminer.high_level import extract_text as pdf_extract_text
+except Exception:
+    pdf_extract_text = None
+try:
+    import fitz  # PyMuPDF
+except Exception:
+    fitz = None
+try:
+    from PIL import Image
+except Exception:
+    Image = None
+try:
+    import pytesseract
+except Exception:
+    pytesseract = None
+try:
+    import docx  # python-docx
+except Exception:
+    docx = None
+
+
+def _download_bytes(url: str) -> bytes | None:
+    try:
+        if not isinstance(url, str) or not url:
+            return None
+        if not url.startswith("http://") and not url.startswith("https://"):
+            return None
+        r = requests.get(url, timeout=10)
+        if r.status_code == 200:
+            return r.content
+    except Exception:
+        return None
+    return None
+
+
+def _ocr_image_bytes(data: bytes, lang: str = "eng+fra") -> str:
+    if not data or Image is None or pytesseract is None:
+        return ""
+    try:
+        img = Image.open(BytesIO(data))
+        if img.mode not in ("RGB", "L"):
+            img = img.convert("RGB")
+        return pytesseract.image_to_string(img, lang=lang) or ""
+    except Exception:
+        return ""
+
+
+def _ocr_pdf_with_fitz(data: bytes, dpi: int = 200, max_pages: int = 20, lang: str = "eng+fra") -> str:
+    if not data or fitz is None or pytesseract is None or Image is None:
+        return ""
+    try:
+        doc = fitz.open(stream=data, filetype="pdf")
+    except Exception:
+        return ""
+    texts = []
+    try:
+        zoom = dpi / 72.0
+        mat = fitz.Matrix(zoom, zoom)
+        for i, page in enumerate(doc, start=1):
+            if i > max_pages:
+                break
+            try:
+                pix = page.get_pixmap(matrix=mat, alpha=False)
+                img_bytes = pix.tobytes("png")
+                t = _ocr_image_bytes(img_bytes, lang=lang)
+                if t and t.strip():
+                    texts.append(t)
+            except Exception:
+                continue
+    finally:
+        try:
+            doc.close()
+        except Exception:
+            pass
+    return "\n\n".join(texts)
+
+
+def _extract_text_from_pdf(data: bytes) -> str:
+    if not data:
+        return ""
+    if pdf_extract_text is None:
+        return _ocr_pdf_with_fitz(data)
+    try:
+        txt = pdf_extract_text(BytesIO(data)) or ""
+    except Exception:
+        txt = ""
+    if not txt or len(txt.strip()) < 50:
+        ocr_txt = _ocr_pdf_with_fitz(data)
+        if ocr_txt:
+            return ocr_txt
+    return txt
+
+
+def _extract_text_from_docx(data: bytes) -> str:
+    if not data or docx is None:
+        return ""
+    try:
+        d = docx.Document(BytesIO(data))
+        paras = [p.text for p in d.paragraphs if p.text and p.text.strip()]
+        return "\n".join(paras)
+    except Exception:
+        return ""
+
+
+def _extract_text_from_txt(data: bytes) -> str:
+    if not data:
+        return ""
+    for enc in ("utf-8", "latin1"):
+        try:
+            return data.decode(enc, errors="ignore")
+        except Exception:
+            continue
+    return ""
+
+
+def _summarize_text_simple(text: str, max_chars: int = 2000) -> str:
+    if not text:
+        return ""
+    t = re.sub(r"\s+", " ", text).strip()
+    if len(t) <= max_chars:
+        return t
+    head = t[: max_chars // 2]
+    tail = t[- max_chars // 3 :]
+    return head + " … " + tail
+
+
+def _chunk_text(t: str, max_chars: int = 1800, overlap: int = 200) -> list[str]:
+    if not t:
+        return []
+    s = re.sub(r"\s+", " ", str(t)).strip()
+    if len(s) <= max_chars:
+        return [s]
+    chunks = []
+    start = 0
+    while start < len(s):
+        end = min(len(s), start + max_chars)
+        chunks.append(s[start:end])
+        if end >= len(s):
+            break
+        start = max(0, end - overlap)
+    return chunks
+
+
+def _summarize_hierarchical(text: str, chunk_size: int = 1800, overlap: int = 200, max_levels: int = 3) -> str:
+    if not text:
+        return ""
+    chunks = _chunk_text(text, max_chars=chunk_size, overlap=overlap)
+    summaries = [_summarize_text_simple(c, max_chars=chunk_size // 2) for c in chunks]
+    merged = " \n".join(summaries)
+    level = 1
+    while len(merged) > chunk_size and level < max_levels:
+        level += 1
+        chunks = _chunk_text(merged, max_chars=chunk_size, overlap=overlap)
+        summaries = [_summarize_text_simple(c, max_chars=chunk_size // 2) for c in chunks]
+        merged = " \n".join(summaries)
+    return _summarize_text_simple(merged, max_chars=chunk_size)
+
+
+def build_app_docs_text(df_docs: pd.DataFrame) -> pd.DataFrame:
+    """Return DataFrame with columns: application_id, text
+    Extract text from documents pointed by URLs if text columns absent.
+    """
+    if df_docs is None or df_docs.empty:
+        return pd.DataFrame(columns=["application_id", "text"])
+    # If a text-like column exists, just select it
+    for c in ["content", "text", "document_text", "body"]:
+        if c in df_docs.columns and "application_id" in df_docs.columns:
+            return df_docs[["application_id", c]].rename(columns={c: "text"})
+    # Else try to extract from URLs/paths
+    link_col: Optional[str] = None
+    for c in ["link", "url", "public_url", "download_url", "path", "storage_path", "file_path", "filename", "name"]:
+        if c in df_docs.columns:
+            link_col = c
+            break
+    if link_col is None or "application_id" not in df_docs.columns:
+        return pd.DataFrame(columns=["application_id", "text"])
+    rows = []
+    for app_id, group in df_docs.groupby("application_id"):
+        parts = []
+        for _, r in group.iterrows():
+            url = str(r.get(link_col, "") or "")
+            if not url:
+                continue
+            data = _download_bytes(url)
+            if not data:
+                continue
+            low = url.lower()
+            txt = ""
+            if low.endswith(".pdf"):
+                txt = _extract_text_from_pdf(data)
+            elif any(low.endswith(ext) for ext in [".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp", ".webp"]):
+                txt = _ocr_image_bytes(data)
+            elif low.endswith(".docx") or low.endswith(".doc"):
+                txt = _extract_text_from_docx(data)
+            elif low.endswith(".txt"):
+                txt = _extract_text_from_txt(data)
+            else:
+                txt = _extract_text_from_txt(data)
+            if txt and txt.strip():
+                parts.append(txt)
+        if parts:
+            rows.append({"application_id": app_id, "text": "\n\n".join(parts)})
+    return pd.DataFrame(rows)
 
 
 def to_df(rows, name: str) -> pd.DataFrame:
@@ -165,8 +374,19 @@ def main(argv=None) -> int:
     else:
         df_app["mtp_text"] = ""
 
-    # Build candidate features/texts
-    df_features = build_candidate_text(df_app=df_app, df_app_docs=None, df_profiles=df_profiles)
+    # Build aggregated docs text per application (download/OCR if needed)
+    df_docs_text = build_app_docs_text(df_docs) if not df_docs.empty else pd.DataFrame(columns=["application_id","text"])
+    if not df_docs_text.empty:
+        df_docs_text = df_docs_text.rename(columns={"text": "document_text"})
+        # merge back into df_docs to provide a text column detectable by build_candidate_text
+        df_docs_for_features = df_docs.merge(df_docs_text, on="application_id", how="left")
+        # prefer explicit 'document_text' naming; build_candidate_text scans common names including 'content','text','document_text','body'
+        df_docs_for_features = df_docs_for_features.rename(columns={"document_text": "document_text"})
+    else:
+        df_docs_for_features = df_docs
+
+    # Build candidate features/texts (now includes documents + mtp_text)
+    df_features = build_candidate_text(df_app=df_app, df_app_docs=df_docs_for_features, df_profiles=df_profiles)
     # Normalize candidate_text and filter too-short texts
     if "candidate_text" in df_features.columns:
         df_features["candidate_text"] = df_features["candidate_text"].fillna("").astype(str).apply(normalize_text)
@@ -248,6 +468,7 @@ def main(argv=None) -> int:
     if "job_text" in df_jobs_vec.columns:
         df_jobs_vec["job_text"] = df_jobs_vec["job_text"].fillna("").astype(str).apply(normalize_text)
     job_text_map = {r["id"]: r["job_text"] for _, r in df_jobs_vec.iterrows()} if "id" in df_jobs_vec.columns else {}
+    job_title_map = {r["id"]: r.get("title") for _, r in df_jobs_vec.iterrows()} if "id" in df_jobs_vec.columns else {}
 
     # Iterate and score
     processed = 0
@@ -265,23 +486,56 @@ def main(argv=None) -> int:
 
         flags = flags_map.get(app_id, {"cv": False, "lm": False, "diploma": False, "id": False, "mtp": bool(r.get("mtp_text"))})
         completeness = compute_completeness(flags)
-        fit = compute_fit(cand_text, job_text, settings.vision_text)
-        final = compute_final(completeness, fit)
+        # Limiter la taille via résumé hiérarchique pour stabiliser le fit sur gros textes
+        try:
+            text_for_fit = _summarize_hierarchical(cand_text, chunk_size=4000, overlap=300)
+        except Exception:
+            text_for_fit = _summarize_text_simple(cand_text, max_chars=4000)
+        fit = compute_fit(text_for_fit, job_text, settings.vision_text)
+        # MTP sub-score (if we have SQLite indicators and a job title)
+        poste_title = job_title_map.get(job_id)
+        mtp_text_val = r.get("mtp_text")
+        try:
+            import math
+            if mtp_text_val is None or (isinstance(mtp_text_val, float) and math.isnan(mtp_text_val)):
+                mtp_text_val = ""
+        except Exception:
+            if mtp_text_val is None:
+                mtp_text_val = ""
+        mtp_scores = compute_mtp_scores(sqlite_conn, poste_title, mtp_text_val) if poste_title else {"overall": None}
+        mtp_sub = mtp_scores.get("overall")
+        # Blend final score with explicit weights
+        # final = 0.25*completeness + 0.60*fit + 0.15*mtp (if mtp available), else 0.25*completeness + 0.75*fit
+        if isinstance(mtp_sub, (int, float)):
+            final = int(round(0.25 * completeness + 0.60 * fit + 0.15 * mtp_sub))
+        else:
+            final = int(round(0.25 * completeness + 0.75 * fit))
         reco = recommend(final)
 
         identity = identity_map.get(cand_id) if cand_id is not None else None
         identity_full = identity_full_map.get(cand_id) if cand_id is not None else None
 
         if args.dry_run:
-            print({
+            dbg = {
                 "application_id": app_id,
                 "candidate_id": cand_id,
+                "job_id": job_id,
+                "job_title": poste_title,
                 "completeness": completeness,
                 "fit": fit,
                 "final": final,
                 "recommendation": reco,
                 "identity_name": identity.get("name") if identity else None,
-            })
+                "mtp": mtp_scores,
+            }
+            # extra debug aids
+            if poste_title:
+                dbg["mtp_input_len"] = len(mtp_text_val or "")
+                if isinstance(mtp_scores, dict):
+                    dbg["matched_poste"] = mtp_scores.get("debug", {}).get("matched_poste")
+                    dbg["match_score"] = mtp_scores.get("debug", {}).get("match_score")
+                    dbg["mtp_reason"] = mtp_scores.get("debug", {}).get("reason")
+            print(dbg)
         else:
             try:
                 payload = {
@@ -291,7 +545,8 @@ def main(argv=None) -> int:
                     "recommendation": reco,
                     "details": {
                         "flags": flags,
-                        "weights": {"final": {"completeness": 0.4, "fit": 0.6}},
+                        "weights": {"final": {"completeness": 0.25, "fit": 0.60 if isinstance(mtp_sub, (int, float)) else 0.75, "mtp": 0.15 if isinstance(mtp_sub, (int, float)) else 0.0}},
+                        "mtp": {"scores": mtp_scores},
                         "identity": identity,
                         "identity_full": identity_full,
                     },

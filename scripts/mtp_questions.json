@@ -1,0 +1,388 @@
+{
+  "postes": [
+    {
+      "poste": "Direction de l'Audit & Contrôle Interne",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant de l'Audit et du Contrôle interne à la SEEG ?",
+        "question3": "Décrivez ce que vous savez des règles et bonnes pratiques requises pour auditer efficacement une entreprise publique telle que la SEEG.",
+        "question4": "Racontez une expérience où vous avez audité un projet d'investissement.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec l'audit ou la gestion des risques.",
+        "question6": "Donnez un exemple pratique pouvant illustrer la meilleure façon de performer l'Audit et le Contrôle interne dans une telle que la SEEG.",
+        "question7": "Comment garantirez-vous que l'entreprise respecte les lois et les réglémentations visant la  réduction des risques d'interruption de services ?"
+      },
+      "talent": {
+        "question1": "Comment transformeriez-vous la fonction audit en un outil stratégique de gouvernance et de transparence à la SEEG ?",
+        "question2": "Donnez un exemple où vous avez mis en place un contrôle qui a réduit significativement les risques opérationnels.",
+        "question3": "Comment garantiriez-vous la confiance des parties prenantes par une meilleure redevabilité ?",
+        "indicateurs": "Capacité à instaurer transparence, gouvernance et maîtrise des risques"
+      },
+      "paradigme": {
+        "question1": "Quelle place accordez-vous à la transparence et à l’éthique dans la performance d’une entreprise publique ?",
+        "question2": "Comment conciliez-vous rigueur de contrôle et soutien à l’innovation ?",
+        "question3": "Quel est le rôle d’un audit dans la confiance entre l’entreprise, l’État et les citoyens ?",
+        "indicateurs": "Intégrité, transparence, responsabilité"
+      }
+    },
+    {
+      "poste": "Direction Qualité Hygiène Sécurité & Environnement",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant QHSE à la SEEG ?",
+        "question3": "Expliquez ce que vous savez des normes de qualité et sécurité requise pour assurer l'excellence des processus métier et support au sein d'une entreprise publique telle que la SEEG.",
+        "question4": "Racontez une expérience où vous avez géré un projet d'investissement avec un focus sur la Qualité, l'Hygiène, la Sécurité et l'Environnement.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la qualité, la sécurité ou l'environnement.",
+        "question6": "Donnez un exemple pratique pouvant illustrant la meilleure façon d’assurer la Qualité, l’Hygiène, la Sécurité et le respect de l’Environnement dans une entreprise telle que la SEEG, en montrant comment vos actions ont contribué à réduire les risques, améliorer la conformité et renforcer la performance durable.",
+        "question7": "Comment garantirez-vous que la SEEG respecte les normes légales et réglementaires en matière de qualité, d’hygiène, de sécurité et d’environnement afin de réduire les risques d’incidents et d’assurer la continuité des services ?"
+      },
+      "talent": {
+        "question1": "Comment établiriez-vous une culture QHSE alignée avec la transition énergétique et la fiabilité du service ?",
+        "question2": "Citez une initiative concrète que vous mèneriez pour réduire durablement les incidents de service.",
+        "question3": "Comment assureriez-vous la conformité aux normes internationales tout en tenant compte du contexte local ?",
+        "indicateurs": "Compétence à bâtir une culture sécurité et réduire durablement les incidents"
+      },
+      "paradigme": {
+        "question1": "Quelle importance accordez-vous à la sécurité des usagers par rapport aux contraintes économiques ?",
+        "question2": "Comment définiriez-vous la responsabilité de l’entreprise vis-à-vis de l’environnement ?",
+        "question3": "Jusqu’où seriez-vous prêt à aller pour instaurer une culture sécurité dans une organisation résistante au changement ?",
+        "indicateurs": "Durabilité, sécurité, responsabilité sociale"
+      }
+    },
+    {
+      "poste": "Direction Juridique, Communication & RSE",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant juridique et communication à la SEEG ?",
+        "question3": "Décrivez ce que vous savez des règles juridiques et des bonnes pratiques de communication pour une entreprise publique telle que la SEEG, avec un focus sur la responsabilité sociale (RSE).",
+        "question4": "Racontez une expérience où vous avez géré juridiquement un projet d'investissement, en assurant le respect des contrats ainsi que les aspects de communications associés.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec le juridique, la communication ou la RSE.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon d’assurer la sécurité juridique, la communication institutionnelle et la responsabilité sociétale dans une entreprise comme la SEEG.",
+        "question7": "omment garantirez-vous que la SEEG respecte ses obligations légales et réglementaires tout en assurant une communication claire et en intégrant la responsabilité sociétale pour limiter les risques de litiges et préserver la réputation de l’entreprise ?"
+      },
+      "talent": {
+        "question1": "Comment transformeriez-vous la communication juridique et institutionnelle en levier de confiance publique ?",
+        "question2": "Quelle stratégie adopteriez-vous pour intégrer la RSE au cœur de la gouvernance de la SEEG ?",
+        "question3": "Comment sécuriseriez-vous les relations avec l’État et les partenaires tout en protégeant l’image de l’entreprise ?",
+        "indicateurs": "Savoir lier droit, communication et RSE en stratégie intégrée"
+      },
+      "paradigme": {
+        "question1": "Pour vous, qu’est-ce qu’une gouvernance responsable dans une entreprise publique ?",
+        "question2": "Comment équilibrez-vous la protection juridique, la transparence et la réputation institutionnelle ?",
+        "question3": "Quelle est votre conception d’une communication éthique et citoyenne ?",
+        "indicateurs": "Intégrité, transparence, inclusion"
+      }
+    },
+    {
+      "poste": "Direction des Systèmes d'Informations",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant des systèmes d'information à la SEEG ?",
+        "question3": "Expliquez ce que vous savez des normes informatiques et  bonnes pratiques requises pour développer et garantir la maîtrise de l'architecture d'entreprise (EA) dans une entreprise publique telle que la SEEG.",
+        "question4": "Racontez une expérience où vous avez géré un projet d'Architecture d'Entreprise ou tout autre projet impliquant la contribution la maîtrise de systèmes d'informations.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec les systèmes d'information.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon de piloter les systèmes d’information d’une entreprise comme la SEEG, en garantissant la performance technologique, la sécurité des données et le soutien aux objectifs stratégiques.",
+        "question7": "Comment garantirez-vous que les systèmes d’information de la SEEG respectent les normes légales et réglementaires en matière de sécurité et de protection des données afin de réduire les risques d’interruption de service et de cyberattaques ?"
+      },
+      "talent": {
+        "question1": "Quelle innovation digitale prioriseriez-vous pour renforcer la performance et la transparence de la SEEG ?",
+        "question2": "Comment utiliseriez-vous la data pour réduire les interruptions de service ?",
+        "question3": "Comment assureriez-vous la cybersécurité dans un contexte de modernisation accélérée ?",
+        "indicateurs": "Double compétence en innovation digitale et cybersécurité"
+      },
+      "paradigme": {
+        "question1": "Quelle valeur donnez-vous à la donnée : un actif stratégique ou un simple outil de gestion ?",
+        "question2": "Comment articulez-vous innovation technologique et protection des usagers ?",
+        "question3": "Quels principes guident vos choix face aux enjeux de cybersécurité et d’intelligence artificielle ?",
+        "indicateurs": "Innovation, efficacité, protection des usagers"
+      }
+    },
+    {
+      "poste": "Chef de Département Electricité",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que chef du département électricité à la SEEG ?",
+        "question3": "Décrivez ce que vous savez des normes requise pour gérer une concession électrique.",
+        "question4": "Racontez une expérience où vous avez dirigé un projet d'investissement orienté réseaux électriques.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la gestion des réseaux électriques.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon de gérer la distribution et la maintenance de l’électricité dans une entreprise comme la SEEG.",
+        "question7": "Comment garantirez-vous que les activités du département Électricité respectent les normes légales et réglementaires afin de réduire les risques de défaillance et d’assurer la continuité de la distribution électrique ?"
+      },
+      "talent": {
+        "question1": "Quelle action prioritaire mettriez-vous en œuvre pour améliorer la fiabilité du réseau électrique ?",
+        "question2": "Comment garantiriez-vous la maintenance efficace des infrastructures vieillissantes ?",
+        "question3": "Comment intégreriez-vous les énergies renouvelables dans la gestion du réseau existant ?",
+        "indicateurs": "Expertise technique couplée à vision de transition énergétique"
+      },
+      "paradigme": {
+        "question1": "Comment percevez-vous la mission de fournir une électricité fiable dans un service public national ?",
+        "question2": "Quelle valeur accordez-vous à la maintenance préventive face à la pression de résultats immédiats ?",
+        "question3": "Quelle est pour vous la place des énergies renouvelables dans la vision énergétique du pays ?",
+        "indicateurs": "Efficacité, durabilité, service public"
+      }
+    },
+    {
+      "poste": "Direction Exploitation Electricité",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant de l'exploitation électricité à la SEEG ?",
+        "question3": "Expliquez ce que vous savez des normes d'exploitation requises pour gérer une concession électrique.",
+        "question4": "Racontez une expérience où vous avez dirigé un projet d'investissement orienté réseaux électriques.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec l'exploitation des réseaux électriques.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon d’assurer l’exploitation optimale et la continuité du service électrique à la SEEG.",
+        "question7": "Comment garantirez-vous que l’exploitation électrique respecte les normes légales et réglementaires afin de réduire les risques de panne et d’assurer un service continu aux usagers ?"
+      },
+      "talent": {
+        "question1": "Comment assureriez-vous la continuité du service malgré des infrastructures fragiles ?",
+        "question2": "Quelle méthode appliqueriez-vous pour réduire les délestages électriques ?",
+        "question3": "Comment organiseriez-vous vos équipes pour optimiser la performance et la sécurité du réseau ?",
+        "indicateurs": "Compétence en gestion de crise et optimisation des opérations"
+      },
+      "paradigme": {
+        "question1": "Quel est le devoir premier d’un responsable exploitation : réduire les coûts ou garantir la continuité du service ?",
+        "question2": "Comment hiérarchisez-vous sécurité, rapidité d’intervention et satisfaction client ?",
+        "question3": "Quelle est votre vision d’une exploitation électrique responsable ?",
+        "indicateurs": "Orientation client, efficacité, sécurité"
+      }
+    },
+    {
+      "poste": "Direction Technique Electricité",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant technique électricité à la SEEG ?",
+        "question3": "Décrivez ce que vous savez des normes techniques requises pour gérer une concession électrique.",
+        "question4": "Racontez une expérience où vous avez dirigé un projet d'investissement orienté réseaux électriques.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la technique des réseaux électriques.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon de piloter les projets techniques liés à l’électricité et d’améliorer la performance des installations à la SEEG.",
+        "question7": "Comment garantirez-vous que les projets et infrastructures électriques respectent les exigences légales et réglementaires afin de réduire les risques techniques et renforcer la fiabilité des installations ?"
+      },
+      "talent": {
+        "question1": "Comment piloteriez-vous un projet de modernisation d’infrastructures électriques critiques ?",
+        "question2": "Quelle solution technique privilégieriez-vous pour réduire les pertes en ligne ?",
+        "question3": "Comment garantiriez-vous la conformité technique aux standards internationaux ?",
+        "indicateurs": "Capacité à piloter des projets de modernisation complexes"
+      },
+      "paradigme": {
+        "question1": "Quelle valeur donnez-vous au respect strict des normes techniques internationales ?",
+        "question2": "Comment conciliez-vous performance technique et contraintes budgétaires ?",
+        "question3": "Pour vous, que signifie « moderniser » une infrastructure publique ?",
+        "indicateurs": "Efficacité, rigueur, innovation technique"
+      }
+    },
+    {
+      "poste": "Chef de Département Eau",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que chef du département eau à la SEEG ?",
+        "question3": "Expliquez ce que vous savez des normes requises pour gérer une concession d'eau",
+        "question4": "Racontez une expérience où vous avez dirigé un projet d'investissement orienté réseaux d'adduction d'eau.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la gestion des réseaux d'eau.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon de gérer la distribution et la maintenance des infrastructures d’eau à la SEEG.",
+        "question7": "Comment garantirez-vous que les projets techniques liés à l’eau respectent les normes légales et réglementaires afin de réduire les risques d’interruption de service et de garantir la qualité de l’approvisionnement ?"
+      },
+      "talent": {
+        "question1": "Quelle stratégie adopteriez-vous pour améliorer la disponibilité de l’eau dans un contexte de stress hydrique ?",
+        "question2": "Comment assureriez-vous la maintenance préventive du réseau d’eau ?",
+        "question3": "Comment concilier efficacité technique et satisfaction des usagers ?",
+        "indicateurs": "Expertise hydraulique alliée à une approche durable"
+      },
+      "paradigme": {
+        "question1": "Selon vous, l’accès universel à l’eau est-il un droit ou un service marchand ?",
+        "question2": "Quelle valeur accordez-vous à la gestion durable des ressources hydriques ?",
+        "question3": "Comment jugez-vous la priorité entre rentabilité économique et qualité du service public de l’eau ?",
+        "indicateurs": "Inclusion, durabilité, service public"
+      }
+    },
+    {
+      "poste": "Direction Exploitation Eau",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant de l'exploitation eau à la SEEG ?",
+        "question3": "Décrivez ce que vous savez des normes d'exploitation requises pour gérer une concession d'eau",
+        "question4": "Racontez une expérience où vous avez dirigé un projet d'investissement orienté réseaux d'adduction d'eau.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec l'exploitation des réseaux d'eau.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon d’assurer l’exploitation optimale et la continuité du service en eau à la SEEG.",
+        "question7": "Comment garantirez-vous que l’exploitation des réseaux d’eau respecte les normes légales et réglementaires afin de limiter les risques de défaillance et d’assurer une distribution continue et sûre ?"
+      },
+      "talent": {
+        "question1": "Comment optimiseriez-vous l’exploitation pour garantir un approvisionnement continu en eau ?",
+        "question2": "Quelle innovation appliqueriez-vous pour réduire les pertes en eau potable ?",
+        "question3": "Comment renforceriez-vous la résilience du réseau face aux aléas climatiques ?",
+        "indicateurs": "Compétence en optimisation et innovation continue"
+      },
+      "paradigme": {
+        "question1": "Quelle place accordez-vous à la satisfaction des usagers dans l’exploitation quotidienne ?",
+        "question2": "Comment définiriez-vous la responsabilité d’un gestionnaire d’eau vis-à-vis des générations futures ?",
+        "question3": "Pour vous, que représente la résilience face au stress hydrique récurrent ?",
+        "indicateurs": "Responsabilité intergénérationnelle, durabilité"
+      }
+    },
+    {
+      "poste": "Direction Technique Eau",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant technique eau à la SEEG ?",
+        "question3": "Expliquez ce que vous savez des normes techniques requises pour gérer une concession d'eau.",
+        "question4": "Racontez une expérience où vous avez dirigé un projet d'investissement orienté réseaux d'adduction d'eau.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la technique des réseaux d'eau.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon de piloter les projets techniques liés à l’eau et d’améliorer la performance des installations à la SEEG.",
+        "question7": "Comment garantirez-vous que les projets techniques liés à l’eau respectent les normes légales et réglementaires afin de réduire les risques d’interruption de service et de garantir la qualité de l’approvisionnement ?"
+      },
+      "talent": {
+        "question1": "Comment structureriez-vous un plan de modernisation des installations hydrauliques ?",
+        "question2": "Quelle approche adopteriez-vous pour intégrer des solutions décentralisées en zones rurales ?",
+        "question3": "Comment garantiriez-vous la qualité de l’eau distribuée selon les standards internationaux ?",
+        "indicateurs": "Capacité à intégrer innovation hydraulique et qualité sanitaire"
+      },
+      "paradigme": {
+        "question1": "Quelle valeur accordez-vous à l’innovation technique dans l’accès à l’eau potable ?",
+        "question2": "Comment jugez-vous l’importance des solutions décentralisées pour les zones rurales ?",
+        "question3": "Quelle est votre vision de la qualité de l’eau distribuée comme facteur de santé publique ?",
+        "indicateurs": "Innovation, inclusion, santé publique"
+      }
+    },
+    {
+      "poste": "Chef de Département Support",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que chef du département support à la SEEG ?",
+        "question3": "Décrivez ce que vous savez des normes requises pour concevoir la politique et gérer les processus support dans une entreprise publique telle que la SEEG.",
+        "question4": "Racontez une expérience où vous avez dirigé un projet d'investissement visant l'efficacité et l'efficience des processus support.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec le support aux infrastructures.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon d’organiser et de renforcer les fonctions support afin d’optimiser la performance globale de la SEEG.",
+        "question7": "Comment garantirez-vous que les activités de support respectent les exigences légales et réglementaires afin de réduire les risques organisationnels et de soutenir la continuité des opérations de la SEEG ?"
+      },
+      "talent": {
+        "question1": "Comment feriez-vous du support un levier d’efficacité plutôt qu’un centre de coûts ?",
+        "question2": "Donnez un exemple où vous avez amélioré la productivité grâce à une meilleure organisation support.",
+        "question3": "Comment assureriez-vous l’alignement des services support avec les objectifs stratégiques de la SEEG ?",
+        "indicateurs": "Savoir transformer les fonctions support en levier de performance"
+      },
+      "paradigme": {
+        "question1": "Pour vous, quel rôle jouent les fonctions support dans la performance globale ?",
+        "question2": "Comment arbitrer entre réduction des coûts et qualité du service interne ?",
+        "question3": "Quelles valeurs doivent guider une fonction support dans une entreprise de service public ?",
+        "indicateurs": "Efficacité, intégrité, alignement stratégique"
+      }
+    },
+    {
+      "poste": "Direction du Capital Humain",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant du capital humain à la SEEG ?",
+        "question3": "Expliquez ce que vous savez des bonnes pratiques de Gestion du Capital Humain pour accompagner la transformation des Hommes et de l'entreprise.",
+        "question4": "Racontez une expérience où vous avez géré un projet RH visant le développement des Hommes au service de la croissance de l'entreprise",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la gestion des équipes.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon de gérer le capital humain et de mobiliser les talents au service de la transformation de la SEEG.",
+        "question7": "Comment garantirez-vous que la gestion du capital humain respecte le cadre légal et réglementaire du travail afin de réduire les risques sociaux et d’assurer la stabilité des opérations de la SEEG ?"
+      },
+      "talent": {
+        "question1": "Comment transformeriez-vous la fonction RH en moteur de la performance collective ?",
+        "question2": "Quelle action prioritaire mèneriez-vous pour attirer et retenir des talents rares ?",
+        "question3": "Comment équilibreriez-vous la réduction de la masse salariale et la motivation des équipes ?",
+        "indicateurs": "Allier gestion RH rigoureuse et inspiration humaine"
+      },
+      "paradigme": {
+        "question1": "Quelle est votre conception de la valeur humaine dans une entreprise publique ?",
+        "question2": "Comment conciliez-vous équité sociale et performance économique ?",
+        "question3": "Pour vous, qu’est-ce qu’un capital humain « stratégique » ?",
+        "indicateurs": "Inclusion, équité, efficacité"
+      }
+    },
+    {
+      "poste": "Direction Commerciale & Recouvrement",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant commercial et recouvrement à la SEEG ?",
+        "question3": "Décrivez ce que vous savez des bonnes pratiques commerciales pour gérer efficacement l'expérience client.",
+        "question4": "Racontez une expérience où vous avez dirigé un projet  investissements visant le développement commerciale de l'entreprise.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la gestion des paiements ou le commerce.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon d’améliorer la relation client et d’optimiser le recouvrement à la SEEG.",
+        "question7": "Comment garantirez-vous que les pratiques commerciales et de recouvrement respectent les lois et réglementations afin de réduire les risques financiers et de préserver la relation de confiance avec les usagers ?"
+      },
+      "talent": {
+        "question1": "Quelle stratégie adopteriez-vous pour améliorer le taux de recouvrement tout en préservant la relation client ?",
+        "question2": "Comment instaureriez-vous une tarification sociale mais viable pour la SEEG ?",
+        "question3": "Comment digitaliseriez-vous la facturation et le suivi client pour réduire les impayés ?",
+        "indicateurs": "Compétence à concilier recouvrement et satisfaction client"
+      },
+      "paradigme": {
+        "question1": "Comment équilibrez-vous exigence de recouvrement et justice sociale ?",
+        "question2": "Quelle place accordez-vous à la relation client dans une entreprise publique ?",
+        "question3": "Pour vous, que signifie « facturer équitablement » ?",
+        "indicateurs": "Orientation client, équité, viabilité économique"
+      }
+    },
+    {
+      "poste": "Direction Finances & Comptabilité",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant financier à la SEEG ?",
+        "question3": "Expliquez ce que vous savez des normes et bonnes pratiques pour assurer l'orthodoxie financière de l'entreprise",
+        "question4": "Racontez une expérience où vous avez géré une situation financière complexe (budget, audit, trésorerie, restructuration) et expliquez comment vos décisions ont garanti la conformité, amélioré la performance et soutenu la stratégie de l’entreprise.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la gestion financière.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon de gérer les finances et la comptabilité pour assurer la conformité et soutenir la stratégie de la SEEG.",
+        "question7": "Comment garantirez-vous que les activités financières et comptables respectent les normes légales et réglementaires afin de réduire les risques de non-conformité et de soutenir la pérennité financière de la SEEG ?"
+      },
+      "talent": {
+        "question1": "Comment garantiriez-vous la fiabilité des comptes dans un contexte d’endettement élevé ?",
+        "question2": "Quelle stratégie financière appliqueriez-vous pour sécuriser la trésorerie ?",
+        "question3": "Comment aligneriez-vous la gestion financière sur le modèle économique viable de la Vision 2025-2035 ?",
+        "indicateurs": "Rigueur financière et vision stratégique"
+      },
+      "paradigme": {
+        "question1": "Quelle importance accordez-vous à la transparence financière dans la confiance publique ?",
+        "question2": "Comment conciliez-vous rigueur budgétaire et investissement dans la modernisation ?",
+        "question3": "Selon vous, que signifie un modèle économique « viable et responsable » ?",
+        "indicateurs": "Intégrité, efficacité, viabilité économique"
+      }
+    },
+    {
+      "poste": "Direction des Moyens Généraux",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant des moyens généraux à la SEEG ?",
+        "question3": "Décrivez ce que vous savez des bonnes pratiques pour gérer efficacement les moyens généraux de l'entreprise.",
+        "question4": "Racontez une expérience où vous avez géré une organisation logistique ou administrative complexe et expliquez comment vos décisions ont optimisé les ressources, garanti la continuité et renforcé la performance de l’institution.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la logistique ou le support.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon de gérer les moyens généraux et d’assurer la continuité opérationnelle de la SEEG.",
+        "question7": "Comment garantirez-vous que la gestion des moyens généraux respecte les normes légales et réglementaires afin de réduire les risques logistiques et de maintenir la continuité opérationnelle de la SEEG ?"
+      },
+      "talent": {
+        "question1": "Comment optimiseriez-vous la gestion logistique pour assurer la continuité opérationnelle ?",
+        "question2": "Quelle méthode appliqueriez-vous pour réduire les coûts tout en améliorant le service interne ?",
+        "question3": "Comment sécuriseriez-vous la gestion des infrastructures et du patrimoine matériel de la SEEG ?",
+        "indicateurs": "Capacité à optimiser logistique et continuité opérationnelle"
+      },
+      "paradigme": {
+        "question1": "Quelle est pour vous la valeur d’une gestion rigoureuse des ressources matérielles ?",
+        "question2": "Comment conciliez-vous durabilité des infrastructures et contraintes budgétaires ?",
+        "question3": "Quelle place accordez-vous à la logistique dans la continuité des services publics ?",
+        "indicateurs": "Durabilité, efficacité, rigueur"
+      }
+    },
+    {
+      "poste": "Coordination Régions",
+      "metiers": {
+        "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
+        "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que coordinateur régional à la SEEG ?",
+        "question3": "Décrivez ce que vous savez des bonnes pratiques en matière de coordinations multisectorielles, multi-sites.",
+        "question4": "Racontez une expérience où vous avez coordonné des actions multisectorielles dans plusieurs zones ou régions et expliquez comment vos décisions ont renforcé la cohérence, amélioré la performance locale et soutenu les priorités nationales.",
+        "question5": "Décrivez deux réalisations majeures que vous avez accomplies dans votre carrière, en lien avec la coordination régionale.",
+        "question6": "Donnez un exemple concret illustrant la meilleure façon de coordonner les activités régionales et d’assurer la cohérence entre les priorités locales et les objectifs nationaux de la SEEG.",
+        "question7": "Comment garantirez-vous que les activités régionales respectent les lois et réglementations locales afin de réduire les risques de rupture de service et d’assurer la cohérence avec les priorités nationales de la SEEG ?"
+      },
+      "talent": {
+        "question1": "Comment assureriez-vous la cohérence des activités régionales avec les priorités nationales de la SEEG ?",
+        "question2": "Donnez un exemple de stratégie pour renforcer la performance des régions éloignées.",
+        "question3": "Comment impliqueriez-vous les parties prenantes locales dans la réussite des objectifs de la Vision 2025-2035 ?",
+        "indicateurs": "Leadership territorial et coordination multisectorielle"
+      },
+      "paradigme": {
+        "question1": "Comment définissez-vous la valeur de la proximité avec les usagers dans les régions ?",
+        "question2": "Quelle importance accordez-vous à l’équité territoriale dans la distribution des services ?",
+        "question3": "Selon vous, quel est le rôle des parties prenantes locales dans la réussite de la SEEG ?",
+        "indicateurs": "Inclusion, équité territoriale, orientation client"
+      }
+    }
+  ]
+}
