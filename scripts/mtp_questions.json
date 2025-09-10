@@ -2,6 +2,7 @@
   "postes": [
     {
       "poste": "Direction de l'Audit & Contrôle Interne",
+      "Indicateurs_Metiers": "Capacité à instaurer transparence, gouvernance et maîtrise des risques",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant de l'Audit et du Contrôle interne à la SEEG ?",
@@ -26,6 +27,7 @@
     },
     {
       "poste": "Direction Qualité Hygiène Sécurité & Environnement",
+      "Indicateurs_Metiers": "Compétence à bâtir une culture sécurité et réduire durablement les incidents",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant QHSE à la SEEG ?",
@@ -50,6 +52,7 @@
     },
     {
       "poste": "Direction Juridique, Communication & RSE",
+      "Indicateurs_Metiers": "Savoir lier droit, communication et RSE en stratégie intégrée",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant juridique et communication à la SEEG ?",
@@ -74,6 +77,7 @@
     },
     {
       "poste": "Direction des Systèmes d'Informations",
+      "Indicateurs_Metiers": "Double compétence en innovation digitale et cybersécurité",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant des systèmes d'information à la SEEG ?",
@@ -98,6 +102,7 @@
     },
     {
       "poste": "Chef de Département Electricité",
+      "Indicateurs_Metiers": "Expertise technique couplée à vision de transition énergétique",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que chef du département électricité à la SEEG ?",
@@ -122,6 +127,7 @@
     },
     {
       "poste": "Direction Exploitation Electricité",
+      "Indicateurs_Metiers": "Compétence en gestion de crise et optimisation des opérations",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant de l'exploitation électricité à la SEEG ?",
@@ -146,6 +152,7 @@
     },
     {
       "poste": "Direction Technique Electricité",
+      "Indicateurs_Metiers": "Capacité à piloter des projets de modernisation complexes",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant technique électricité à la SEEG ?",
@@ -170,6 +177,7 @@
     },
     {
       "poste": "Chef de Département Eau",
+      "Indicateurs_Metiers": "Expertise hydraulique alliée à une approche durable",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que chef du département eau à la SEEG ?",
@@ -194,6 +202,7 @@
     },
     {
       "poste": "Direction Exploitation Eau",
+      "Indicateurs_Metiers": "Compétence en optimisation et innovation continue",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant de l'exploitation eau à la SEEG ?",
@@ -218,6 +227,7 @@
     },
     {
       "poste": "Direction Technique Eau",
+      "Indicateurs_Metiers": "Capacité à intégrer innovation hydraulique et qualité sanitaire",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant technique eau à la SEEG ?",
@@ -242,6 +252,7 @@
     },
     {
       "poste": "Chef de Département Support",
+      "Indicateurs_Metiers": "Savoir transformer les fonctions support en levier de performance",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que chef du département support à la SEEG ?",
@@ -266,6 +277,7 @@
     },
     {
       "poste": "Direction du Capital Humain",
+      "Indicateurs_Metiers": "Allier gestion RH rigoureuse et inspiration humaine",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant du capital humain à la SEEG ?",
@@ -290,6 +302,7 @@
     },
     {
       "poste": "Direction Commerciale & Recouvrement",
+      "Indicateurs_Metiers": "Compétence à concilier recouvrement et satisfaction client",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant commercial et recouvrement à la SEEG ?",
@@ -314,6 +327,7 @@
     },
     {
       "poste": "Direction Finances & Comptabilité",
+      "Indicateurs_Metiers": "Rigueur financière et vision stratégique",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant financier à la SEEG ?",
@@ -338,6 +352,7 @@
     },
     {
       "poste": "Direction des Moyens Généraux",
+      "Indicateurs_Metiers": "Capacité à optimiser logistique et continuité opérationnelle",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que dirigeant des moyens généraux à la SEEG ?",
@@ -362,6 +377,7 @@
     },
     {
       "poste": "Coordination Régions",
+      "Indicateurs_Metiers": "Leadership territorial et coordination multisectorielle",
       "metiers": {
         "question1": "Quelles sont les problématiques que vous identifiez aujourd'hui à la SEEG, pour ce poste ? Quelles solutions préconisez-vous ? Quels pourraient être les obstacles au déploiement de votre solution ?",
         "question2": "Quels sont les trois principaux challenges que vous comptez relever en tant que coordinateur régional à la SEEG ?",

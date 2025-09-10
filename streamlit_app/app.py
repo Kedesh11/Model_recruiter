@@ -52,6 +52,7 @@ try:
     from openai import OpenAI
 except Exception:
     OpenAI = None
+from seeg_core.mtp import parse_mtp_answers, mtp_to_text, compute_mtp_scores
 
 st.set_page_config(page_title="SEEG Recrutement", layout="wide")
 
@@ -1272,6 +1273,7 @@ def page_candidate():
     st.subheader("Adhérence MTP au poste")
 
     def _extract_mtp_overall(r: pd.Series) -> float | None:
+        d = None
         try:
             d = r.get("details") if "details" in r.index else None
             if isinstance(d, dict):
@@ -1280,14 +1282,51 @@ def page_candidate():
                     sc = mtp.get("scores") or {}
                     if isinstance(sc, dict):
                         ov = sc.get("overall")
-                        if ov is None:
-                            return None
-                        try:
-                            return float(ov)
-                        except Exception:
-                            return None
+                        # Si on a une valeur exploitable, la retourner
+                        if isinstance(ov, (int, float, str)):
+                            try:
+                                return float(ov)
+                            except Exception:
+                                pass
         except Exception:
-            return None
+            # Ignorer et tenter le fallback
+            pass
+        # Fallback: recalculer à la volée si NA / non exploitable
+        try:
+            # Récupérer le poste (titre) depuis la ligne
+            try:
+                poste = _get_job_from_row(r)
+            except Exception:
+                poste = None
+            if not poste:
+                # tenter colonnes alternatives
+                for k in ["title", "job_title", "position_title"]:
+                    v = r.get(k)
+                    if pd.notna(v) and str(v).strip():
+                        poste = str(v).strip()
+                        break
+            # Récupérer un texte MTP à partir de details
+            mtp_text = ""
+            if isinstance(d, dict):
+                raw_ans = d.get("mtp_answers") or d.get("mtp_raw") or d.get("mtp_text") or d.get("mtp")
+                if raw_ans is not None:
+                    try:
+                        parsed = parse_mtp_answers(raw_ans)
+                        mtp_text = mtp_to_text(parsed)
+                    except Exception:
+                        mtp_text = str(raw_ans) if str(raw_ans).strip() else ""
+            # Si on a poste + texte, calculer
+            if poste and mtp_text and str(mtp_text).strip():
+                try:
+                    sqlite_db = st.session_state.get("sqlite_db")
+                except Exception:
+                    sqlite_db = None
+                conn = get_sqlite(sqlite_db) if sqlite_db else None
+                sc = compute_mtp_scores(conn, poste, mtp_text)
+                ov = sc.get("overall") if isinstance(sc, dict) else None
+                return float(ov) if isinstance(ov, (int, float)) else None
+        except Exception:
+            pass
         return None
 
     def _doc_support_from_flags(r: pd.Series) -> float:

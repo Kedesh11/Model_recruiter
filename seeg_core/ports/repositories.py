@@ -1,0 +1,23 @@
+from __future__ import annotations
+from abc import ABC, abstractmethod
+from typing import Protocol, Iterable, Optional, Dict, Any
+
+from seeg_core.domain.candidate import Application, ApplicationDocument
+from seeg_core.domain.job import JobOffer
+from seeg_core.domain.score import Score
+
+
+class ReadRepository(Protocol):
+    def list_applications(self) -> Iterable[Application]: ...
+    def list_application_documents(self) -> Iterable[ApplicationDocument]: ...
+    def list_job_offers(self) -> Iterable[JobOffer]: ...
+
+
+class WriteRepository(Protocol):
+    def upsert_score(self, score: Score) -> None: ...
+
+
+class Transactional(Protocol):
+    def begin(self) -> None: ...
+    def commit(self) -> None: ...
+    def rollback(self) -> None: ...

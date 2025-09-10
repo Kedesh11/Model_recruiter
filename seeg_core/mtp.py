@@ -174,6 +174,14 @@ def compute_mtp_scores(conn, poste: str | None, answer_text: str | None) -> Dict
                             indic = dim_val.get("indicateurs")
                             if indic:
                                 metas_by_dim[dim_name] = indic
+                    # Also consider top-level "Indicateurs_Metiers" as part of 'metier' indicators
+                    # Merge with existing 'metier' indicators if already present
+                    top_metier = best_item.get("Indicateurs_Metiers") or best_item.get("indicateurs_metiers")
+                    if top_metier:
+                        if metas_by_dim.get("metier"):
+                            metas_by_dim["metier"] = f"{metas_by_dim['metier']}, {top_metier}"
+                        else:
+                            metas_by_dim["metier"] = top_metier
                     out["debug"]["matched_poste"] = best_item.get("poste")
                     out["debug"]["match_score"] = round(best_score, 3)
                 # if still empty, leave empty
