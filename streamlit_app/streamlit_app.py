@@ -449,9 +449,19 @@ def _derive_age_series(users: pd.DataFrame, profiles: pd.DataFrame) -> pd.DataFr
 
 @st.cache_data(ttl=300)
 def load_data(sqlite_db: str | None = None):
-    sb = get_supabase()
+    # Try to init Supabase; if missing credentials, fall back gracefully
+    try:
+        sb = get_supabase()
+    except Exception:
+        sb = None
+        try:
+            st.warning(
+                "Configuration Supabase absente: définissez SUPABASE_URL et SUPABASE_KEY (Settings > Secrets). "
+                "Le tableau de bord s'affiche avec des données vides.")
+        except Exception:
+            pass
     # Core tables
-    apps = sb.table("applications").select("*").execute().data or []
+    apps = [] if sb is None else (sb.table("applications").select("*").execute().data or [])
     scores = []
     # Prefer SQLite if specified and exists
     if sqlite_db and os.path.exists(sqlite_db):
@@ -463,48 +473,62 @@ def load_data(sqlite_db: str | None = None):
         except Exception:
             scores_df = pd.DataFrame()
     else:
-        try:
-            scores = sb.table("scores").select("*").execute().data or []
-        except Exception:
+        if sb is not None:
+            try:
+                scores = sb.table("scores").select("*").execute().data or []
+            except Exception:
+                scores = []
+        else:
             scores = []
     # Users/candidates
-    try:
-        users = sb.table("users").select("*").execute().data or []
-    except Exception:
+    if sb is not None:
+        try:
+            users = sb.table("users").select("*").execute().data or []
+        except Exception:
+            users = []
+    else:
         users = []
-    if not users:
+    if not users and sb is not None:
         try:
             users = sb.table("candidates").select("*").execute().data or []
         except Exception:
             users = []
     # Candidate profiles (for gender and extra info)
-    try:
-        profiles = sb.table("candidate_profiles").select("*").execute().data or []
-    except Exception:
+    if sb is not None:
+        try:
+            profiles = sb.table("candidate_profiles").select("*").execute().data or []
+        except Exception:
+            profiles = []
+    else:
         profiles = []
     # Positions/job offers
     positions = []
-    for t in ["job_offers", "positions", "jobs", "offers"]:
-        try:
-            positions = sb.table(t).select("*").execute().data or []
-            if isinstance(positions, list):
-                break
-        except Exception:
-            continue
+    if sb is not None:
+        for t in ["job_offers", "positions", "jobs", "offers"]:
+            try:
+                positions = sb.table(t).select("*").execute().data or []
+                if isinstance(positions, list):
+                    break
+            except Exception:
+                continue
     # Documents by application
     documents = []
-    for t in ["application_documents", "documents", "docs"]:
-        try:
-            documents = sb.table(t).select("*").execute().data or []
-            if isinstance(documents, list):
-                break
-        except Exception:
-            continue
+    if sb is not None:
+        for t in ["application_documents", "documents", "docs"]:
+            try:
+                documents = sb.table(t).select("*").execute().data or []
+                if isinstance(documents, list):
+                    break
+            except Exception:
+                continue
     # Fallback: if no scores available yet, try protocol_evaluations as score source
     if (not isinstance(locals().get("scores_df", None), pd.DataFrame) or scores_df.empty) and not scores:
-        try:
-            proto = sb.table("protocol_evaluations").select("*").execute().data or []
-        except Exception:
+        if sb is not None:
+            try:
+                proto = sb.table("protocol_evaluations").select("*").execute().data or []
+            except Exception:
+                proto = []
+        else:
             proto = []
         if proto:
             dfp = pd.DataFrame(proto)
@@ -586,7 +610,7 @@ def _derive_gender_series(users: pd.DataFrame, profiles: pd.DataFrame) -> pd.Ser
 
 
 def page_home():
-    st.title("SEEG Recrutement — Accueil")
+    st.title("Recrutement — Accueil")
     st.caption("Vue synthétique du pipeline de candidatures et des indicateurs clés")
     # Style global léger (cartes KPIs)
     st.markdown(
@@ -1868,66 +1892,6 @@ def page_candidate():
         weaknesses = d.get("weaknesses") or d.get("gaps") or d.get("missing_skills")
         keywords = d.get("keywords") or d.get("top_keywords")
 
-    # has_any = False
-    # if any([explanations, strengths, weaknesses, keywords]):
-    #     has_any = True
-    #     st.subheader("Explications du modèle")
-    #     if explanations:
-    #         if isinstance(explanations, (list, tuple)):
-    #             st.markdown("\n".join([f"- {str(x)}" for x in explanations if x is not None and str(x).strip()]))
-    #         else:
-    #             st.markdown(str(explanations))
-    #     if strengths:
-    #         st.markdown("**Points forts identifiés :**")
-    #         if isinstance(strengths, (list, tuple)):
-    #             st.markdown("\n".join([f"- {str(x)}" for x in strengths if x is not None and str(x).strip()]))
-    #         else:
-    #             st.markdown(f"- {str(strengths)}")
-    #     if weaknesses:
-    #         st.markdown("**Axes d'amélioration :**")
-    #         if isinstance(weaknesses, (list, tuple)):
-    #             st.markdown("\n".join([f"- {str(x)}" for x in weaknesses if x is not None and str(x).strip()]))
-    #         else:
-    #             st.markdown(f"- {str(weaknesses)}")
-    #     if keywords:
-    #         st.markdown("**Mots-clés pertinents :**")
-    #         if isinstance(keywords, (list, tuple, set)):
-    #             st.markdown(", ".join([str(x) for x in keywords if x is not None and str(x).strip()]))
-    #         else:
-    #             st.markdown(str(keywords))
-
-    # if not has_any:
-    #     # Heuristique courte basée sur scores/flags
-    #     comp = float(row.get("completeness", 0) or 0)
-    #     fit = float(row.get("fit", 0) or 0)
-    #     final = float(row.get("final", 0) or 0)
-    #     flags = {}
-    #     if isinstance(d, dict) and isinstance(d.get("flags"), dict):
-    #         flags = d.get("flags", {})
-    #     auto = []
-    #     if fit >= 75:
-    #         auto.append("- Le contenu du dossier correspond bien aux exigences du poste (haute adéquation).")
-    #     elif fit >= 55:
-    #         auto.append("- Adéquation correcte avec le poste, mais certains éléments pourraient mieux correspondre.")
-    #     else:
-    #         auto.append("- Adéquation au poste faible; le profil semble éloigné des attentes exprimées.")
-    #     if comp < 50:
-    #         missing = [k for k, v in (flags or {}).items() if not bool(v)]
-    #         if missing:
-    #             auto.append("- Dossier incomplet (manque: " + ", ".join(sorted(set(missing))) + ").")
-    #         else:
-    #             auto.append("- Dossier incomplet; ajouter des éléments (CV, LM, diplômes, réponses MTP) pourrait aider.")
-    #     if final >= 80:
-    #         auto.append("- Très bon candidat selon le modèle.")
-    #     elif final >= 60:
-    #         auto.append("- Candidat à considérer avec compléments éventuels.")
-    #     else:
-    #         auto.append("- Candidat actuellement non recommandé au vu des critères du modèle.")
-    #     with st.expander("Explications du modèle"):
-    #         st.markdown("\n".join(auto))
-
-
-    # (Bloc Insights résiduel supprimé)
 
  
 def _slugify(text: str) -> str:
